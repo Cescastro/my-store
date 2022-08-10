@@ -1,21 +1,29 @@
 <div class="show-mobile">
     <div>
-        <button>
-            <img src="" alt="">
+        <button (click)="toggleMenu()">
+            <img src="../../../assets/images/iconmenu.svg" alt="">
         </button>
         <a href="">
-            <img src="" alt="sale">
+            <img width="35" src="../../../assets/images/watermelon.png" alt="sale">
         </a>
-        <a href="">
-            <img src="" alt="shopping cart">
+        <a href="" class="logo">
+            <img width="35" src="../../../assets/images/cart.png" alt="shopping cart">
         </a>
+    </div>
+    <div class="side-menu" [class.active]="activeMenu">
+        <button (click)="toggleMenu()">Close</button>
+        <ul>
+            <li><a href="">All</a></li>                
+            <li><a href="">Clothes</a></li>
+            <li><a href="">Electronics</a></li>
+        </ul>
     </div>
 </div>
 <div class="hide-mobile">
     <div>
         <nav>
-            <a href="" class="logo">
-                <img src="" alt="">
+            <a href="/" class="logo">
+                <img src="../../../assets/images/iconmenu.svg" alt="">
             </a>
             <ul>
                 <li><a href="">All</a></li>                
@@ -24,11 +32,14 @@
             </ul>
         </nav>
         <div class="info">
+            <a href="">
+                <img width="35" src="../../../assets/images/watermelon.png" alt="sale">
+            </a>
             <div class="account">csr@csr.com</div>
         </div>
         <div>
             <a href="">
-                <img src="" alt="">
+                <img width="35" src="../../../assets/images/cart.png" alt="logo">
             </a>
         </div>
     </div>
