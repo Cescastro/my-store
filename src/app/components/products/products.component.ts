@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { Product } from 'src/app/models/product.model';
+import { Product, CreateProductDTO } from 'src/app/models/product.model';
 
 import { StoreService } from '../../services/store.service';
 import { ProductService } from '../../services/product.service';
@@ -17,6 +17,17 @@ export class ProductsComponent implements OnInit {
   showProductDetail = false;
   today = new Date();
   date = new Date(2022, 8, 29);
+  productChosen: Product = {
+    id: '',
+    price: 0,
+    images: [],
+    title: '',
+    category: {
+      id: '',
+      name: ''
+    },
+    description: '',
+  }
 
 
   constructor(
@@ -43,8 +54,26 @@ export class ProductsComponent implements OnInit {
   }
 
   onShowDetail(id: string){
-    this.productService.getProduct(id).subscribe(data =>{
-      console.log(data)});
+    this.productService.getProduct(id)
+    .subscribe(data =>{
+      this.toggleProductDetail();
+      this.productChosen = data;
+    });
+      
+  }
+
+  createNewProduct(){
+    const product: CreateProductDTO={
+      title: 'nuevo producto',
+      description: 'blabla',
+      images: ['https://placeimg.com/640/480/any?random=$%7BMath.random()%7D'],
+      price: 1000,
+      categoryId: 2,
+    }
+    
+    this.productService.create(product).subscribe(data =>{
+      this.products.unshift(data);
+    });
   }
 
 }
