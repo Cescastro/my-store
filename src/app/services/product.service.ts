@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Product, CreateProductDTO, UpdateProductDTO } from '../models/product.model';
+import { environment } from './../../environments/environment';
 import { retry } from 'rxjs/operators';
 
 @Injectable({
@@ -8,7 +9,7 @@ import { retry } from 'rxjs/operators';
 })
 export class ProductService {
 
-  private apiUrl = 'https://young-sands-07814.herokuapp.com/api/products/';
+  private apiUrl = `${environment.API_URL}/api/products/`;
 
   constructor(
     private http: HttpClient
